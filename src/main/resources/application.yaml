@@ -1,0 +1,44 @@
+spring:
+  main:
+    allow-circular-references: true
+  application:
+    name: api
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/parking
+    username: arnaud
+    password: arnaud1720
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+      logging:
+        level:
+          org:
+            hibernate:
+              SQL: DEBUG
+              type: TRACE
+  security:
+    user:
+      password: admin
+      name: admin
+
+server:
+  servlet:
+    context-path: /api
+  port: 8082
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+        exclude: '*'
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-api.html
